@@ -1,12 +1,3 @@
-/**
- * react-native-check-box
- * Checkbox component for react native, it works on iOS and Android
- * https://github.com/crazycodeboy/react-native-check-box
- * Email:crazycodeboy@gmail.com
- * Blog:http://jiapenghui.com
- * @flow
- */
-
 import React, {Component} from 'react';
 import {
     StyleSheet,
@@ -37,13 +28,13 @@ export default class CheckBox extends Component {
         leftText: React.PropTypes.string,
         leftTextView: React.PropTypes.element,
         rightText: React.PropTypes.string,
-        rightTextStyle: React.PropTypes.style,
+        rightTextStyle: React.PropTypes.object,
         checkedImage: React.PropTypes.element,
         unCheckedImage: React.PropTypes.element,
         onClick: React.PropTypes.func.isRequired,
         isChecked: React.PropTypes.bool,
         isIcon: React.PropTypes.bool,
-        iconStyle: React.PropTypes.style,
+        iconStyle: React.PropTypes.object,
         checkedIconName: React.PropTypes.string,
         unCheckedIconName: React.PropTypes.string,
     }
@@ -78,7 +69,7 @@ export default class CheckBox extends Component {
         if (this.props.leftText) return this._renderImage();
         if (!this.props.rightText)return null;
         return (
-            <Text style={styles.rightText}>{this.props.rightText}</Text>
+            <Text style={this.props.rightTextStyle}>{this.props.rightText}</Text>
         )
     }
 
@@ -99,11 +90,11 @@ export default class CheckBox extends Component {
     _renderIcon() {
         if (this.state.isChecked) {
             return (
-                <IconFA name={this.props.checkedIconName} style={this.iconStyle}/>
+                <IconFA name={this.props.checkedIconName} style={this.props.iconStyle}/>
             )
         } else {
             return (
-                <IconFA name={this.props.unCheckedIconName} style={this.iconStyle}/>
+                <IconFA name={this.props.unCheckedIconName} style={this.props.iconStyle}/>
             )
         }
     }
@@ -148,8 +139,5 @@ const styles = StyleSheet.create({
     },
     leftText: {
         flex: 1,
-    },
-    rightText: {
-        flex: 1,
     }
-})
+});
