@@ -63,7 +63,7 @@ export default class CheckBox extends Component {
      * 渲染左侧控件: 文字或者图标
      */
     _renderLeft() {
-        if (this.props.rightText) return this.props.isIcon ? this._renderIcon() : return this._renderImage();
+        if (this.props.rightText) return this.props.isIcon ? this._renderIcon() : this._renderImage();
         if (this.props.leftTextView)return this.props.leftTextView;
         if (!this.props.leftText)return null;
         return (
